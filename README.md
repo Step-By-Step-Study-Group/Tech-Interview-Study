@@ -9,3 +9,4 @@
 | 이름 | GitHub | Blog |
 | - | - | - |
 | 김형준 | [@hjun0917](https://github.com/hjun0917) | [Velog](https://velog.io/@hjun0917) |
+| 서보성 | [@hjun0917](https://github.com/teabear12) | [Velog](https://greenteabear.tistory.com/) |
