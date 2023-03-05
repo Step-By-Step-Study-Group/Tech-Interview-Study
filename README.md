@@ -10,3 +10,4 @@
 | - | - | - |
 | 김형준 | [@hjun0917](https://github.com/hjun0917) | [Velog](https://velog.io/@hjun0917) |
 | 김소라 | [@dev-rara](https://github.com/dev-rara) | [Velog](https://velog.io/@rara_kim) |
+| 서보성 | [@teabear12](https://github.com/teabear12) | [Velog](https://greenteabear.tistory.com/) |
