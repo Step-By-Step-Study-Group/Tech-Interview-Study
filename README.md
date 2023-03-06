@@ -12,3 +12,4 @@
 | 김소라 | [@dev-rara](https://github.com/dev-rara) | [Velog](https://velog.io/@rara_kim) |
 | 서보성 | [@teabear12](https://github.com/teabear12) | [Velog](https://greenteabear.tistory.com/) |
 | 백지훈 | [@jihun1362](https://github.com/jihun1362) | [Velog](https://velog.io/@jihun1362) |
+| 민승기 | [@seungit](https://github.com/seungit) | [blog](https://seungit.oopy.io/) |
