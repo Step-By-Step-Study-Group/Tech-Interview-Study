@@ -22,4 +22,4 @@
 | 백지훈 | [@jihun1362](https://github.com/jihun1362) | [Velog](https://velog.io/@jihun1362) |
 | 민승기 | [@seungit](https://github.com/seungit) | [blog](https://seungit.oopy.io/) |
 | 김재영 | [@code0613](https://github.com/code0613) | [Velog](https://velog.io/@duam0864) |
-| 정진   | [@JeongO41](https://github.com/JeongO41) | [Velog](https://velog.io/@snoopy_21|
+| 정진   | [@JeongO41](https://github.com/JeongO41) | [Velog](https://velog.io/@snoopy_21)|
