@@ -1,6 +1,7 @@
 # 💬 목차
 
-[Transaction이란?](#transaction이란)
+[Transaction이란?](#transaction이란)  
+[SQL Injection이란?](#sql-injection이란)
 
 # Transaction이란?
 
@@ -31,5 +32,38 @@
 트랜잭션의 격리 수준이 낮을수록 더 많은 문제가 발생합니다.
 
 
-[[데이터베이스] 트랜잭션의 ACID 성질](https://hanamon.kr/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EC%9D%98-acid-%EC%84%B1%EC%A7%88/)
-[트랜잭션의 격리 수준(isolation Level)이란?](https://nesoy.github.io/articles/2019-05/Database-Transaction-isolation)
+[[데이터베이스] 트랜잭션의 ACID 성질](https://hanamon.kr/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EC%9D%98-acid-%EC%84%B1%EC%A7%88/)  
+[트랜잭션의 격리 수준(isolation Level)이란?](https://nesoy.github.io/articles/2019-05/Database-Transaction-isolation)  
+[[MySQL] - 트랜잭션의 격리 수준(Isolation level)](https://zzang9ha.tistory.com/381)
+
+# SQL Injection이란?
+
+SQL 인젝션(또는 SQL 삽입, SQL 주입)은 코드 인젝션의 한 기법으로 클라이언트의 입력값을 조작하여
+서버의 데이터베이스를 공격할 수 있는 공격방식을 말합니다. 주로 사용자가 입력한 데이터를 제대로 필터링,
+이스케이핑하지 못했을 경우에 발생합니다.  
+쉬운 공격 난이도에 비해 발생하는 피해는 어머어마하기 때문에
+시큐어 코딩을 하는 개발자라면 가장 먼저 배우게 되는 내용입니다.  
+이러한 인젝션 계열의 취약점들은 테스트를 통한 발견은 어렵지만 스캐닝툴이나 코드 검증절차를 거치면 보통 쉽게 발견되기 때문에 탐지하기는 쉬운 편이라고 합니다.
+
+### 공격 목적
+SQL 인젝션의 대표적인 목적으로는 다음과 같은 것들이 있습니다.
+1. 정보 유출
+2. 저장된 데이터 유출 및 조작
+3. 원격 코드 실행
+4. 인증 우회
+
+### 공격 방법
+SQL 인젝션 공격의 대표적인 방법으로는 로그인 폼을 대상으로 하는 공격이 있습니다.
+이를 통해 정상적인 계정 정보 없이도 로그인을 우회하여 인증을 획득할 수 있습니다.  
+
+또한 시스템에서 발생하는 에러 메세지를 이용해 공격하는 방법도 존재합니다. 이외에도 다양한 SQL 인젝션 공격 방법이 존재합니다.
+
+### 대응 방안
+SQL 인젝션 공격에 대한 대응 방안으로는 대표적으로 3가지를 꼽을 수 있습니다.
+1. 입력 값에 대한 검증
+2. Error Message 노출 금지
+3. Prepared Statement 구문사용
+위와 같은 방법을 통해 어느정도 SQL 인젝션 공격에 대한 공격이 가능합니다.
+
+[SQL injection](https://namu.wiki/w/SQL%20injection)  
+[[Database] SQL Injection - 개념, 공격 방법, 방어 방법](https://velog.io/@yanghl98/Database-SQL-Injection)
