@@ -1,7 +1,7 @@
 # 💬 목차
 
-[TCP와 UDP의 특징과 차이](#tcp와-udp의-특징과-차이)
-[REST API](#REST-API란 무엇인가요?)
+[TCP와 UDP의 특징과 차이](#tcp와-udp의-특징과-차이) <br>
+[REST API](#rest-api란-무엇인가요?)
 
 ### TCP와 UDP의 특징과 차이
 
