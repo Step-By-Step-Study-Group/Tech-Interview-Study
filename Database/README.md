@@ -3,6 +3,7 @@
 [Transaction이란?](#transaction이란)  
 [SQL Injection이란?](#sql-injection이란)  
 [이너조인과 아우터조인을 비교해서 설명해주세요](#이너조인과 아우터조인을 비교해서 설명해주세요)  
+[동적쿼리란 무엇이고 언제 사용하는지 설명해주세요.](#동적쿼리란 무엇이고 언제 사용하는지 설명해주세요.)
 
 # Transaction이란?
 
@@ -93,3 +94,29 @@ INNER JOIN은 어느 테이블을 먼저 읽어도 결과가 달라지지 않으
 [Inner Join과 Outer Join 차이점](https://server-engineer.tistory.com/306)  
 [[MySQL] Inner JOIN과 Outer JOIN의 차이가 무엇일까?](https://devlog-wjdrbs96.tistory.com/347) 
 
+# 동적쿼리란 무엇이고 언제 사용하는지 설명해주세요.
+
+동적쿼리란? 동적쿼리란 실행시에 쿼리문장이 만들어져 실행되는 쿼리문을 말합니다. 쿼리문이 변하냐 변하지 않느냐에 따라 변하지 않으면 정적쿼리 변한다면 동적쿼리로 생각하시면 됩니다.
+대표적으로 QureyDSL이 있으며  
+
+    @Override
+    public List<Employee> findAllBySearch(String search, String category) {
+        BooleanBuilder builder = new BooleanBuilder();
+        builder = switch (category) {
+            case "직원번호" -> builder.and(employee.employeeNumber.contains(search));
+            case "이름" -> builder.and(employee.name.contains(search));
+            case "직급" -> builder.and(employee.position.contains(search));
+            case "전화번호" -> builder.and(employee.phoneNumber.contains(search));
+            case "이메일" -> builder.and(employee.email.contains(search));
+            default -> throw new CustomException(WRONG_CATEGORY_ERROR);
+        };
+        return jpaQueryFactory
+                .selectFrom(employee)
+                .where(
+                        builder
+                )
+                .orderBy(employee.name.asc())
+                .fetch();
+    }  
+이러한 쿼리문을 말합니다.  
+쿼리문의 정렬 값이나 조건 값 등이 상황에 따라 유동적으로 변해야될 필요가 있을 때 사용합니다.
