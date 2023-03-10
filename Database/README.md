@@ -1,7 +1,8 @@
 # 💬 목차
 
 [Transaction이란?](#transaction이란)  
-[SQL Injection이란?](#sql-injection이란)
+[SQL Injection이란?](#sql-injection이란)  
+[이너조인과 아우터조인을 비교해서 설명해주세요](#이너조인과 아우터조인을 비교해서 설명해주세요)  
 
 # Transaction이란?
 
@@ -67,3 +68,28 @@ SQL 인젝션 공격에 대한 대응 방안으로는 대표적으로 3가지를
 
 [SQL injection](https://namu.wiki/w/SQL%20injection)  
 [[Database] SQL Injection - 개념, 공격 방법, 방어 방법](https://velog.io/@yanghl98/Database-SQL-Injection)
+
+# 이너조인과 아우터조인을 비교해서 설명해주세요
+
+### JOIN의 종류
+
+JOIN의 종류는 크게 INNER JOIN과 OUTER JOIN으로 구분할 수 있고, OUTER JOIN은 다시 LEFT OUTER JOIN, RIGHT OUTER JOIN, FULL OUTER JOIN으로 구분할 수 있습니다.
+조인의 처리에서 어느 테이블을 먼저 읽을지를 결정하는 것은 상당히 중요하며, 그에 따라 처리할 작업량이 상당히 달라집니다.
+
+INNER JOIN은 어느 테이블을 먼저 읽어도 결과가 달라지지 않으므로 MySQL 옵티마이저가 JOIN의 순서를 조절해서 다양한 방법으로 최적화를 수행할 수 있습니다. 하지만 OUTER JOIN은 반드시 OUTER가 되는 테이블을 먼저 읽어야 하기 때문에 조인 순서를 옵티마이저가 선택할 수 없습니다.
+
+1. INNER JOIN  
+조인이 되는 키값을 기준으로 교집합 (NULL값을 포함하지 않는다)
+
+![img.png](img.png)
+![img_2.png](img_2.png)
+
+2. OUTER JOIN  
+조인이 되는 키값을 기준으로 기준테이블 Key 집합 (기준테이블은 NULL값을 포함한다)
+
+![img_1.png](img_1.png)
+![img_3.png](img_3.png)
+
+[Inner Join과 Outer Join 차이점](https://server-engineer.tistory.com/306)  
+[[MySQL] Inner JOIN과 Outer JOIN의 차이가 무엇일까?](https://devlog-wjdrbs96.tistory.com/347) 
+
