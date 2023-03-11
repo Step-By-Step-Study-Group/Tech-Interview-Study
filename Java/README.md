@@ -52,3 +52,53 @@
 
 
 [추상클래스와 인터페이스](https://tranquil-queen-c5a.notion.site/73ecd4919d4f4a5ebf3a1a9a8dbcd217)
+
+# Garbage Collector란 무엇인가요?
+
+Java 이전의 C나 C++ 같은 언어에서는 개발자가 직접 메모리 할당과 해제를 컨트롤 해야했습니다.
+때문에 개발자는 잦은 메모리 이슈로부터 자유로울수 없었는데, 이를 어느정도 해소하기 위해 가비지 컬렉터가 등장하였습니다.
+
+### Garbage Collection(GC)
+가비지 컬렉션이란, 메모리 관리 방법 중 하나로, 시스템에서 더이상 사용하지 않는
+동적 할당된 메모리 블럭을 찾아 자동으로 다시 사용 가능한 자원으로 회수하는 것입니다.  
+시스템에서 가비지 컬렉션을 수행하는 부분을 **가비지 컬렉터**라고 부릅니다.
+
+### Garbage Collector의 원리
+GC 작업을 하는 가비지 컬렉터는 다음과 같은 일을 합니다.
+- 메모리 할당
+- 사용중인 메모리 인식
+- 사용하지 않는 메모리 인식
+
+![img_1.png](img_1.png)
+
+JVM에는 Heap 메모리 영역이 존재합니다.
+
+Heap 메모리의 각 영역을 간략히 설명하자면,
+- Young : 비교적 젊은 Reference가 살아있는 곳
+  - Eden : Young 영역 중에서도 특히 갓 생성된 Reference가 살아있는 곳
+- Old : 특정 횟수 이상 살아남은 Reference가 살아있는 곳
+- Permanent : Method Area의 메타정보가 기록된 곳
+
+으로 정리할 수 있습니다.
+
+### Minor GC와 Major GC
+Young 영역에서 발생한 GC를 Minor GC라고 하며, 여기서 실행되는 알고리즘을 **Stop and Copy 알고리즘**이라고 부릅니다.
+Stop and Copy 알고리즘은 CG의 빈도를 높여 자잘한 청소작업을 여러번하여
+사용자로 하여금 프로그램이 정지되는 경험을 주지 않게하고, 단편화 역시 처리하는 알고리즘입니다. 
+> 대부분의 객체는 생성되고 얼마안돼 Unreachable하게 되는데, 대부분의 오래된 객체는 젊은 객체를 적게 참조하기 때문입니다.
+
+나머지 두 영역에서 발생한 GC를 Major GC라고 하며, 메모리가 커서 성능이슈가 발생할 수 있습니다.
+
+### 누가 쓰레기(Garbage)인가?
+가비지 컬렉터는 그럼 정리할 쓰레기를 어떻게 판단 할까요?
+
+바로 Reachable과 Unreachable, 즉 치우면 안되는 것과 치워야 하는 것으로 구분하여 판단합니다.
+![img_2.png](img_2.png)
+그림에 화살표로 이어진 Object들은 참조가 이루어진 것으로 Reachable 상태이고, 반대로 화살표로 이어지지 않은 Object들은 참조가 없는 것으로 Unreachable 상태입니다.
+> 가비지 컬렉션은 특정 객체가 쓰레기인지 아닌지 판단하기 위해서 도달성, 도달능력이라는 개념을 적용합니다.
+> 객체에 유효한 레퍼런스가 없다면 Unreachable 상태로 구분하고 수거의 대상이 되는 것입니다.
+
+이렇게 상태로 구분이된 Object들은 GC의 알고리즘과 구현방식에 의해 이동, 압축 및 삭제를 거치게 됩니다.
+
+[Garbage Collector 제대로 알기](https://velog.io/@recordsbeat/Garbage-Collector-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EC%95%8C%EA%B8%B0)
+[가비지 컬렉션, 컬렉터(Garbage Collection)란?](https://blog.metafor.kr/163)
