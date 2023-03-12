@@ -3,7 +3,7 @@
 [추상클래스와 인터페이스의 차이점에 대해 설명해주세요.](#추상클래스와 인터페이스의 차이점에 대해 설명해주세요.)  
 [Garbage Collector란 무엇인가요?](#garbage-collector란-무엇인가요)  
 [디스페처 서블릿은 어떤 역할을 하는지 설명해주세요](#디스페처-서블릿은-어떤-역할을-하는지-설명해주세요)  
-[POJO란 무엇인가?](POJO란-무엇인가)
+[POJO(Plain-Old-Java-Object)란 무엇인가?](#POJO(Plain-Old-Java-Object)란-무엇인가)
 
 # 추상클래스와 인터페이스의 차이점에 대해 설명해주세요.
 
@@ -124,7 +124,7 @@ Stop and Copy 알고리즘은 CG의 빈도를 높여 자잘한 청소작업을 �
 <br>
 <br>  
   
-# POJO란 무엇인가?  
+# POJO(Plain-Old-Java-Object)란 무엇인가?  
   
 POJO(Plain-Old-Java-Object)는 말 그대로 순수한 자바 오브젝트를 뜻한다.  
 POJO라는 개념은 예전에 JavaEE등의 중량 프레임워크(특히 EJB) 을 사용하면서 단순한 자바 오브젝트를 사용해서 개발하는 것이 아닌 프레임워크에 종속적인 부분으로 개발을 진행했다.  
