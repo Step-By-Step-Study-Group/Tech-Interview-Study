@@ -154,3 +154,32 @@ public class Member {
 }
 ```
 
+# 자바 애플리케이션이 실행되는 과정에 대해서 설명해주세요?
+
+**.java - compiler - .class - JVM( 로딩, 배치 ) →실행**
+
+java 파일을 java 컴파일러가 가상 기계어 파일인 java 클래스 파일 즉, java 바이트 코드로 번역한다.
+
+**java 바이트 코드**
+
+JVM이 이해할 수 있는 언어로 변환된 자바 소스 코드 / 확장자 : .class
+
+**JVM**
+
+javaVirtual Machine의 줄임말로 OS 마다 따로 코드를 작성해야하는 번거로움 없이 java가 플랫폼에서 독립적으로 사용가능하게 번역해준다.
+
+**동작 과정**
+
+**Java Compiler** → java Source file을 Java Byte Code(.class)로 변경
+
+**Class Loader** → JVM내로 .class 파일 Load / Loading 된 클래스들은 Runtime Data Area에 배치
+
+**Execution Engine** → Loading 된 클래스의 Bytecode 해석
+
+**Runtime Data Area** → JVM이 프로세스로써 수행되기 위해 OS로부터 할당받는 메모리 영역
+
+- Method Area → 모든 Thread에게 공유되며, 클래스 정보, 변수 정보, Method정보, static변수 정보, 상수 정보 등이 저장되는 영역
+- Heap Area → 모든 Thread에게 공유되며, new 명령어로 생성된 인스턴스와 객체가 저장되는 구역, 공간이 부족해지면 Garbage Collection이 실행
+- Stack Area → 각 스레드마다 하나씩 생성된다. Method안에서 사용되는 값들(매개변수, 지역변수, 리턴 값 등)이 저장되는 구역
+- PC Register → 각 스레드마다 하나씩 생성되고, CPU의 Register와 역할이 비슷함. 현재 수행 중인 JVM명령의 주소 값이 저장
+- Native Method Stack → 각 스레드마다 하나씩 생성되고, 다른 언어(C/C++ 등)의 메서드 호출을 위해 할당되는 구역 언어에 맞게 Stack이 형성되는 구역 JNI(Java Native Interface)라는 표준 규약을 제공
