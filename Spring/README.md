@@ -24,5 +24,5 @@ POJO는 순수 Java만을 사용하여 만득 객체이므로 특정 기술이�
 반면, 스프링 부트는 자체적인 웹 서버를 내장하고 있어(Tomcat), 빠르고 간편하게 배포를 진행할 수 있습니다. 또한, 독립적으로 실행 가능한 .jar 파일로 프로젝트를 빌드할 수 있어, 클라우드 서비스 및 도커와 같은 가상화 환경에 빠르게 배포할 수 있습니다.
 
 ### Reference
-[스프링과 스프링부트(Spring Boot)ㅣ정의, 특징, 사용 이유, 생성 방법](https://www.codestates.com/blog/content/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8)
-[[Spring] Spring과 Spring Boot의 차이점, Hibernate, Bean Scope, Bean 생명주기](https://yamyam-spaghetti.tistory.com/56)
+- [스프링과 스프링부트(Spring Boot)ㅣ정의, 특징, 사용 이유, 생성 방법](https://www.codestates.com/blog/content/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8)
+- [[Spring] Spring과 Spring Boot의 차이점, Hibernate, Bean Scope, Bean 생명주기](https://yamyam-spaghetti.tistory.com/56)
