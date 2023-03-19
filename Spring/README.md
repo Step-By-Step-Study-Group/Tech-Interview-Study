@@ -1,6 +1,7 @@
 # 💬 목차
 
 - [스프링과 스프링 부트의 차이점](#스프링과-스프링-부트의-차이점)
+- [Spring MVC와 Spring Webflux](#Spring-MVC와-Spring-Webflux)
 
 # 스프링과 스프링 부트의 차이점
 
@@ -51,3 +52,13 @@ Spring Boot 환경에서는 디폴트로 존재하는 `@SpringBootApplication` �
 ### Reference
 [[Spring] 스프링 빈(Bean)이란?](https://mozzi-devlog.tistory.com/19)
 [[Spring] Spring Bean 총 정리](https://steady-coding.tistory.com/594)
+
+# Spring-MVC와-Spring-Webflux
+**Spring MVC**는 우리가 Spring Boot를 쓰면 사용하게 되는 가장 보편적인 방식으로 볼 수 있다.
+Spring MVC는 요청이 들어오면 그 때마다 Thread를 생성한다. 결국 다수의 요청이 오면 그만큼의 Thread를 생성해야 하고 리소스가 굉장히 많이 들아가게 된다. 그래서 Spring MVC는 애플리케이션이 실행되면 Thread pool을 생성하고 요청이 들어오면 Thread pool에 Thread들이 요청을 하나씩 가져가게 된다.
+이 방식의 단점은 요청의 수가 pool size를 초과하면 요청이 계속 쌓이게 되고 Thread Pool Hell 현상이 발생할 수 있는 점이다..
+
+**Spring WebFlux**는 Event driven 방식이고 비동기 논블로킹 방식이라고 한다. Node.js처럼 이벤트 루프가 돌아서 요청이 발생하면 그것에 맞는 핸들러가 처리를 위임하고 처리가 완료되면 callback메소드를 통해 응답을 반환한다. 따라서 적응 thread로도 많은 사용자의 요청을 받아낼 수 있다.  
+단순히 생각해보면 Webflux방식을 사용하는 것이 더 좋아보일 수 있지만 WebFlux방식의 성능을 끌어내려면 요청을 처리하는 모든 파이프라인이 논블로킹하게 동작해야만 한다. 특정 구간에 블로킹 방식이 있으면 거기서부터 Thread Pool Hell같은 문제들이 역시 발생할 수 있다.
+
+**Thread pool hell** : 설정해놓은 thread pool size를 넘게 되면 작업이 처리될 때까지 Queue에서 계속해서 기다려야 한다. 그래서 전체의 대기시간이 늘어나는데 이런 현상을 **Thread pool hell** 이라고 한다.
