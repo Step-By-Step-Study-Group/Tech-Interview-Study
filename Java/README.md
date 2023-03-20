@@ -310,3 +310,25 @@ javaVirtual Machine의 줄임말로 OS 마다 따로 코드를 작성해야하�
 - 생성자가 아닌 메서드를 호출하여 객체를 생성하기 때문에 성능에 영향을 미칠 수 있다 → 대부분의 경우 미미한 차이
 - 불변 클래스를 만들기 어렵다 → `@Builder`는 객체를 생성할 때 필드의 값을 변경할 수 있기 때문
 - 이를 해결하기 위해서는 `@Builder(toBuilder = true)`를 사용하여 객체를 변경할 때 새로운 객체를 생성하도록 해야 함
+
+
+# [java]lombok에 대해 설명해주세요.
+
+**lombok**
+
+java라이브러리로 반복되는 getter, setter, toString 등의 반복 메서드 작성 코드를 줄여주는 코드 다이어트 라이브러리입니다.
+
+**왜 사용하는가?**
+
+앞에서 말했듯 java에는 많은 클래스와 entity가 존재하기에 getter, setter, tostring 등으로 코드를 줄여 줘서 가독성을 높일 수 있고 귀찮은 작업 시간을 줄일 수 있기 때문에 사용한다.
+
+**lombok 장점**
+
+시간, 가독성, 유지보수 등에서 이점이 많기 때문에 사용
+
+**lombok 단점**
+
+내부 동작에 대해 어느정도 숙지를 해야 한다. 예를 들어 @data나 @toString으로 자동 생성되는 toString()메서드는 순환 참조 또는 무한재귀호출 문제로 StackOverflowError가 발생할 수도 있다.
+
+**lombok과 충돌하는 라이브러리들**
+jackson, Immutables, MapStruct
