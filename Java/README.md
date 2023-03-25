@@ -7,8 +7,9 @@
 [영속성 컨텍스트란 무엇인가?](#영속성-컨텍스트란-무엇인가)<br/>
 [제네릭이란 무엇이고 사용하는 이유를 설명해주세요](#제네릭이란-무엇이고-사용하는-이유를-설명해주세요)<br/>
 [접근제어자란?](#접근제어자란)<br/>
-[@builder란?](#builder란)
-
+[@builder란?](#builder란)<br/>
+[lombok이란?](#lombok이란)<br/>
+[JPA란?](#jpa란)
 
 
 # 추상클래스와 인터페이스의 차이점에 대해 설명해주세요.
@@ -312,7 +313,7 @@ javaVirtual Machine의 줄임말로 OS 마다 따로 코드를 작성해야하�
 - 이를 해결하기 위해서는 `@Builder(toBuilder = true)`를 사용하여 객체를 변경할 때 새로운 객체를 생성하도록 해야 함
 
 
-# [java]lombok에 대해 설명해주세요.
+# lombok이란?
 
 **lombok**
 
@@ -332,3 +333,98 @@ java라이브러리로 반복되는 getter, setter, toString 등의 반복 메�
 
 **lombok과 충돌하는 라이브러리들**
 jackson, Immutables, MapStruct
+
+# JPA란
+
+## JPA(Java Persistence API) 
+
+자바에서 제공하는 하이버네이트 기반 ORM(Object-Relational Mapping) 기술의 표준 인터페이스
+
+ORM이란 객체와 관계형 데이터베이스를 매핑하는 기술로, 객체 지향 프로그래밍과 관계형 데이터베이스 간의 불일치 문제를 해결해주는 기술
+
+### 장점
+
+- SQL 쿼리 작성을 줄여 개발자의 생산성을 향상
+- 객체-데이터베이스 간 매핑을 자동으로 처리
+- 데이터베이스 종속성을 줄여 이식성 향상
+
+### 단점
+
+- JPA를 사용할 때 초기 설정이 복잡
+- 일부 상황에서는 직접 SQL을 작성하여 실행하는 것이 효율적일 수 있음<br/>
+
+<details>
+<summary>JPA 버전별 특징</summary>
+<div markdown="1">
+
+### JPA 1.0
+
+- 2006년 출시
+- 엔티티 매핑, 연관 관계, 객체 식별 등의 기본적인 ORM 기능 제공
+- JPQL, Criteria API 지원
+  
+### JPA 2.0
+
+- 2009년 출시
+- 표준 스펙으로 포함되어 있지 않았던 캐시, 기타 검색 관련 기능 등이 추가됨
+- Criteria API의 API가 개선됨
+- 데이터 소스를 선언하는 데 사용되는 `PersistenceUnit` 어노테이션 대신에 xml 파일을 사용하는 `PersistenceContext` 어노테이션 도입
+  
+### JPA 2.1
+
+- 2013년 출시
+- 스토어드 프로시저를 이용한 데이터베이스 함수 호출 가능
+- 메타모델(Metamodel) API 제공
+- **엔티티 그래프(Entity Graph)** 기능 추가
+  - [엔티티 그래프](https://www.ibm.com/docs/ko/was-liberty/zos?topic=jpa-java-persistence-api-21-behavior-changes)
+
+  
+### JPA 2.2
+
+- 2017년 출시
+- 스토어드 프로시저를 이용한 데이터베이스 함수 호출을 표준으로 정의
+- 기존 XML 설정을 어노테이션으로 대체하는 자바 기반 설정을 지원
+</div>
+</details>
+
+<details>
+<summary>동작방식</summary>
+<div markdown="1">
+
+1. **의존성 추가** 
+  - 프로젝트의 의존성 관리 도구를 사용하여 JPA를 프로젝트에 추가
+  - ex) Maven, Gradle
+    
+2. **Entity 클래스 작성**
+  - JPA에서는 객체와 데이터베이스의 관계를 정의하기 위해 Entity 클래스를 작성
+  - Entity 클래스는 `@Entity` 어노테이션을 사용하여 지정함
+  - Entity 클래스 객체의 필드를 데이터베이스의 테이블 컬럼과 매핑하기 위해 `@Column` 어노테이션을 사용
+
+3. **EntityManagerFactory 생성**
+  - JPA는 EntityManager를 사용하여 객체와 데이터베이스 간의 작업을 수행
+  - EntityManagerFactory는 EntityManager를 생성하기 위해 사용
+  - 프로그램 전체에서 하나의 EntityManagerFactory를 사용
+
+4. **EntityManager 생성**
+  - EntityManagerFactory를 사용하여 EntityManager를 생성
+
+5. **트랜잭션 처리**
+  - JPA에서는 데이터베이스 작업을 트랜잭션 단위로 처리
+  - 트랜잭션을 시작하고 커밋 또는 롤백 등의 일련의 과정을 수행해야 함
+
+6. **객체 추가, 수정, 삭제**
+  - EntityManager를 사용하여 데이터베이스와 상호작용하면서 객체를 추가, 수정, 삭제
+
+7. **JPQL 쿼리 실행**
+  - JPA에서는 JPQL를 사용하여 데이터베이스에서 데이터를 검색
+  - 객체를 대상으로 쿼리를 작성
+
+8. **자원 해제**
+  - EntityManager를 사용한 후에는 `close()` 메소드를 사용하여 자원을 해제해야 함
+  - 최근 JPA구현체들은 EntityManger를 사용하고 난 후 `close()` 메소드를 명시적으로 호출하지 않아도 자동으로 처리하는 기능을 제공 이를 Auto-closing 이라고 부름
+  - ex) **Hibernate**
+    - 개발자가 `close()` 메소드를 호출하지 않으면 EntityManger가 여전히 영구 저장소와 연결된 상태로 유지되어 자원 낭비 및 오류 방생 가능성이 있음
+    - Hibernate는 EntityManager를 사용하고 난 후에 자동으로 `close()` 메소드를 호출하며 이를 위해 `Java SE 7` 이상의 AutoCloseable 인터페이스를 구현함
+    - Auto-closing을 사용하더라고 JPA에서는 여전히 트랜잭션을 명시적으로 커밋하거나 롤백해야 하며 이를 위해 EntityManager를 사용한 후에는 반드시 트랜잭션을 종료 해야함
+</div>
+</details>
