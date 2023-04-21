@@ -3,7 +3,8 @@
 [Array와 LinkedList의 특징과 차이](#array와-linkedlist의-특징과-차이)<br/>
 [이진탐색트리(BST)](#이진탐색트리-bst)<br/>
 [스택과 큐의 차이](#스택과-큐의-차이)<br/>
-[버블정렬](#버블정렬)
+[버블정렬](#버블정렬)<br/>
+[퀵정렬](#퀵정렬)
 
 ## Array와 LinkedList의 특징과 차이
 
@@ -71,7 +72,6 @@
 
 ## 자바로 구현한 예제
 
-
 ``` Java
 public class BubbleSort {
     public static void main(String[] args) {
@@ -114,3 +114,81 @@ public class BubbleSort {
 입력 데이터가 무작위로 주어지는 경우
  
 - 모든 원소를 비교하며 교환해야 함 - **O(n^2)**
+
+# 퀵정렬
+
+분할 정복 방식을 사용하는 비교 기반 정렬 알고리즘
+
+## 자바로 구현한 예제
+
+``` Java
+public class QuickSort {
+    
+    public static void main(String[] args) {
+        int[] arr = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+        quickSort(arr, 0, arr.length - 1);
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    public static void quickSort(int[] arr, int left, int right) { 
+        if (left < right) {
+            int pivotIndex = partition(arr, left, right);
+            quickSort(arr, left, pivotIndex - 1);
+            quickSort(arr, pivotIndex + 1, right);
+        }
+    }
+
+    public static int partition(int[] arr, int left, int right) { // 분할
+        int pivot = arr[right];
+        int i = left - 1;
+        for (int j = left; j < right; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i + 1, right);
+        return i + 1;
+    }
+
+    public static void swap(int[] arr, int i, int j) { // 정복(요소들의 위치 교환)
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}
+
+```
+## 동작 방식
+
+1. 정렬할 배열에서 하나의 원소를 선택하여 **기준값(pivot)** 으로 설정
+
+2. 배열에서 기준값 제외한 나머지 원소들을 기준값을 기준으로 두 개의 부분 배열로 **분할** (작은 값은 왼쪽에 큰 값은 오른쪽에 위치하도록 분할)
+
+3. 각 부분 배열을 재귀적으로 퀵 정렬을 수행 (기준값은 이미 정렬되어있어 부분 배열에 포함하지 않음)
+
+4. 부분 배열들이 더 이상 분할되지 않는다면 부분 배열들을 하나의 배열로 합침(**정복**)
+
+## 장점
+- 불필요한 데이터의 이동을 최소화 → 다른 정렬 알고리즘보다 효율적
+
+## 단점
+- **정렬된 배열**에 대해서는 평균적인 경우와 같은 성능X
+- 기준값 선택 방법에 따라 수행 시간이 크게 영향을 받음
+- 안정 정렬이 아니므로 동일한 값을 가지는 원소들의 순서가 바뀔 수 있음
+
+## 시간복잡도
+
+### 최선의 경우
+
+기준점을 기준으로 균등하게 분할되는 경우 - **O(n log n)**
+
+### 평균의 경우
+
+기준점이 균등하지 않은 경우 - 대부분의 경우 **O(n log n)** 에 가깝게 수행됨
+
+### 최악의 경우
+
+기준점이 항상 최소값이나 최대값으로 선택되는 경우 - **O(n^2)**
