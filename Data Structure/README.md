@@ -192,3 +192,14 @@ public class QuickSort {
 ### 최악의 경우
 
 기준점이 항상 최소값이나 최대값으로 선택되는 경우 - **O(n^2)**
+
+## 자바의 Arrays.sort() 메소드
+
+Java 7 이전 버전에서는 **Quicksort** 을 사용
+Java SE 7부터 **Dual-Pivot Quicksort** 을 사용함 
+
+### Dual-Pivot Quicksort
+
+기존 퀵 정렬보다 효율적이며 대부분의 경우 **O(n log n)** 시간복잡도를 가짐
+
+pivot(기준점) 을 두 개로 선택하여 배열을 3개의 영역으로 구분하여 분할하며 각각 퀵정렬을 수행한다
