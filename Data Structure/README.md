@@ -70,6 +70,8 @@
 
 인접한 두 원소의 대소를 비교하고 조건에 맞지 않으면 위치를 교환하면서 정렬하는 알고리즘
 
+![bubble-sort-001](https://user-images.githubusercontent.com/97332044/233838605-b75a0ed4-ab3d-4a40-99cf-c7eebab03a36.gif)
+
 ## 자바로 구현한 예제
 
 ``` Java
@@ -118,6 +120,8 @@ public class BubbleSort {
 # 퀵정렬
 
 분할 정복 방식을 사용하는 비교 기반 정렬 알고리즘
+
+![퀵 정렬](https://user-images.githubusercontent.com/97332044/233842224-2a8aecf5-9617-421b-85e0-aee0d416b2cb.gif)
 
 ## 자바로 구현한 예제
 
