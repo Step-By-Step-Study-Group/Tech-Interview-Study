@@ -10,6 +10,7 @@
 [@builder란?](#builder란)<br/>
 [lombok이란?](#lombok이란)<br/>
 [JPA란?](#jpa란)<br/>
+[Spring Data JPA](#spring-data-jpa)<br/>
 [Final 키워드란?](#final-키워드란)<br/>
 [업캐스팅 다운캐스팅](#업캐스팅-다운캐스팅)
 
@@ -457,6 +458,20 @@ ORM이란 객체와 관계형 데이터베이스를 매핑하는 기술로, 객�
     - Auto-closing을 사용하더라고 JPA에서는 여전히 트랜잭션을 명시적으로 커밋하거나 롤백해야 하며 이를 위해 EntityManager를 사용한 후에는 반드시 트랜잭션을 종료 해야함
 </div>
 </details>
+
+# Spring Data JPA
+
+``JPA``는 자바 진영의 ORM 기술 표준
+
+- **데이터베이스**와 **객체지향 프로그래밍 언어** 사이의 **매핑**을 처리하는 인터페이스를 제공
+
+``Spring Data JPA``는 스프링 프레임워크에서 제공하는 JPA를 쉽게 사용할 수 있도록 도와주는 **라이브러리**
+- Spring Data JPA는 JPA의 표준 기능을 제공
+- 스프링 프레임워크의 다양한 기능을 제공
+
+- Spring Data JPA는 JPA를 기반으로함
+- JPA의 ``Entity`` ``Repository`` ``EntityManager`` 등의 기능을 그대로 사용할 수 있음
+- Spring Data JPA는 JPA의 기본 기능 외에도 페이징, 정렬, 동적 쿼리 등의 기능을 추가 제공
 
 # Final 키워드란
 
