@@ -13,7 +13,8 @@
 [Spring Data JPA](#spring-data-jpa)<br/>
 [Final 키워드란?](#final-키워드란)<br/>
 [업캐스팅 다운캐스팅](#업캐스팅-다운캐스팅)<br/>
-[Wrapper Class](#wrapper-class)
+[Wrapper Class](#wrapper-class)<br/>
+[Synchronized](#synchronized)
 
 
 # 추상클래스와 인터페이스의 차이점에 대해 설명해주세요.
@@ -551,3 +552,13 @@ ORM이란 객체와 관계형 데이터베이스를 매핑하는 기술로, 객�
 ## 단점
 
 - 기본타입에 비해 메모리 사용량이 많고 처리속도가 느릴 수 있음
+
+# Synchronized
+
+- 멀티스레드 환경에서 **공유자원**에 대한 **동시 접근**을 **제어**하기 위해 사용되는 **동기화** 예약어
+
+- Synchronized 키워드를 사용하여 메소드나 특정 구간에 Lock을 걸어 제어할 수 있다
+
+- Synchronized 키워드를 사용하면 스레드간 경쟁 조건을 방지 할 수 있지만 잘못 사용하면 데드락의 문제가 발생할 수 있다
+
+
